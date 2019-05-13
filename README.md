@@ -6,6 +6,9 @@ This image contains:
 * Many Switch C/C++ libraries
 * Build tools for the host
 * The recommended Rust nightly build
-* A Switch Rust target (`--target aarch64-horizon-elf`)
+* A Switch ELF Rust target (`--target aarch64-horizon-elf`)
+* A Switch NRO Rust target (`--target aarch64-horizon-nro`)
+* [linkle](https://github.com/MegatonHammer/linkle)
 * Xargo
-* A pre-built sysroot (including std)
+* A pre-built sysroot (including std) for both targets
+* [twib](https://github.com/misson20000)
