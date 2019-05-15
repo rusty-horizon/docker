@@ -64,6 +64,10 @@ COPY --from=builder /root/twili/twib/build/prefix/bin/twib /usr/bin/twib
 # Add cargo config
 COPY cargo-config.toml /.cargo/config
 
+# Cache Cargo registry and sysroots
+VOLUME /root/.cargo
+VOLUME /root/.xargo
+
 # Mount the work directory
 WORKDIR workdir
 VOLUME workdir
