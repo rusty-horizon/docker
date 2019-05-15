@@ -61,6 +61,9 @@ RUN rm -rf /tmp/sysroot-builder/
 # Copy twib
 COPY --from=builder /root/twili/twib/build/prefix/bin/twib /usr/bin/twib
 
+# Add cargo config
+COPY cargo-config.toml /.cargo/config
+
 # Mount the work directory
 WORKDIR workdir
 VOLUME workdir
