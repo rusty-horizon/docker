@@ -37,7 +37,7 @@ RUN cargo install --git https://github.com/MegatonHammer/linkle.git --all-featur
 RUN cargo install --git https://github.com/rusty-horizon/aarch64-horizon-nro-ld.git
 
 # Update devkitA64
-RUN dkp-pacman --noconfirm -Syyu
+RUN cp /proc/mounts /etc/mtab && dkp-pacman --noconfirm -Syyu
 
 # Add targets
 COPY aarch64-horizon-elf.json /etc/rust-targets/
@@ -49,11 +49,11 @@ COPY sysroot-builder/ /tmp/sysroot-builder/
 
 # aarch64-horizon-elf
 RUN cd /tmp/sysroot-builder/ && \
-    xargo build --target aarch64-horizon-elf -vv
+    xargo build --target aarch64-horizon-elf -vv # rerun
 
 # aarch64-horizon-nro
 RUN cd /tmp/sysroot-builder/ && \
-    xargo build --target aarch64-horizon-nro -vv
+    xargo build --target aarch64-horizon-nro -vv # rerun
 
 # Cleanup
 RUN rm -rf /tmp/sysroot-builder/
