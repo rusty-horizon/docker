@@ -33,11 +33,11 @@ RUN rustup component add rust-src
 
 # Install dependencies
 RUN cargo install xargo
-RUN cargo install --git https://github.com/MegatonHammer/linkle.git --all-features
+RUN wget https://github.com/MegatonHammer/linkle/releases/download/v0.2.7/linkle-v0.2.7-x86_64-unknown-linux-musl.tar.gz && tar -xf linkle-*.tar.gz -C /usr/bin/
 RUN cargo install --git https://github.com/rusty-horizon/aarch64-horizon-nro-ld.git
 
 # Update devkitA64
-RUN cp /proc/mounts /etc/mtab && dkp-pacman --noconfirm -Syyu
+RUN (ln -s /proc/mounts /etc/mtab || true); dkp-pacman --noconfirm -Syyu
 
 # Add targets
 COPY aarch64-horizon-elf.json /etc/rust-targets/
